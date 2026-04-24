@@ -42,3 +42,31 @@ A VS Code task is provided to launch the Flask app directly.
 
 - Static files like CSS, JavaScript, and images are served from the project root via Flask's static folder.
 - Do not host locally unless you want to. The app will run only when you explicitly start Flask.
+
+## Public deployment support
+
+This repo now includes `requirements.txt` and `Procfile` for hosting on Python-friendly services like Render, Railway, or Heroku.
+
+### Deploy to a Python host
+
+1. Connect your GitHub repo to Render, Railway, or Heroku.
+2. Set the build command to:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Set the start command to:
+   ```bash
+   gunicorn app:app
+   ```
+
+After deployment, the service will provide a public URL you can open on your iPhone.
+
+### Quick public preview using ngrok
+
+If you want a temporary public URL from your PC, install ngrok and run:
+
+```powershell
+ngrok http 5000
+```
+
+Then open the generated `https://...` URL on your phone.
