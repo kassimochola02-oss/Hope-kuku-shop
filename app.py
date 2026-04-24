@@ -73,5 +73,4 @@ def pay_bitcoin():
     # Placeholder for Bitcoin payment
     return jsonify({"status": "Bitcoin payment initiated"})
 
-if __name__ == '__main__':
-    app.run(debug=True)
+

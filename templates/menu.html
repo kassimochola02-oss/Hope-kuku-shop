@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Our Menu | Rich Chicken Hub</title>
-    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
     <style>
       :root {
         --primary-orange: #ff6600;
@@ -156,51 +159,105 @@
 
     <div class="menu-container">
       <div class="menu-item">
-        <img src="images/kuku full.jpg" alt="Full Roast Chicken" />
+        <img
+          src="{{ url_for('static', filename='images/kuku full.jpg') }}"
+          alt="Full/half Roast Chicken"
+        />
         <div class="item-details">
-          <h3>Full Roast Chicken</h3>
-          <span class="price-tag">Ksh 1,200</span>
-          <span class="btc-price">₿ 0.00045 BTC</span>
+          <h3>Full/half Roast Chicken</h3>
+          <span class="price-tag">Ksh 550-800</span>
+          <span class="btc-price">₿ 0.00046 - 0.00067 BTC</span>
         </div>
         <a href="/checkout" class="btn-order">Order Now</a>
       </div>
 
       <div class="menu-item">
-        <img src="images/drumstick.jpg" alt="Half Roast Chicken" />
+        <img
+          src="{{ url_for('static', filename='images/drumstick.jpg') }}"
+          alt="Half Roast Chicken"
+        />
         <div class="item-details">
           <h3>Drumstick</h3>
-          <span class="price-tag">Ksh 200</span>
-          <span class="btc-price">₿ 0.00008 BTC</span>
+          <span class="price-tag">Ksh 550 a kg </span>
+          <span class="btc-price">₿ 0.00046 BTC</span>
         </div>
         <a href="/checkout" class="btn-order">Order Now</a>
       </div>
 
       <div class="menu-item">
-        <img src="images/chicken wings.jpg" alt="Chicken Wings" />
+        <img
+          src="{{ url_for('static', filename='images/chicken wings.jpg') }}"
+          alt="Chicken Wings"
+        />
         <div class="item-details">
           <h3>Chicken Wings</h3>
-          <span class="price-tag">Ksh 150</span>
-          <span class="btc-price">₿ 0.00006 BTC</span>
+          <span class="price-tag">Ksh 600 a kg</span>
+          <span class="btc-price">₿ 0.00050 BTC</span>
         </div>
         <a href="/checkout" class="btn-order">Order Now</a>
       </div>
 
       <div class="menu-item">
-        <img src="images/chips.jpg" alt="Golden Chips" />
+        <img
+          src="{{ url_for('static', filename='images/chips.jpg') }}"
+          alt="Golden Chips"
+        />
         <div class="item-details">
           <h3>Golden Chips</h3>
-          <span class="price-tag">Ksh 50 - 200</span>
-          <span class="btc-price">₿ 0.00004 BTC</span>
+          <span class="price-tag">Ksh 70/100/150</span>
+          <span class="btc-price">₿ 0.000058 / 0.000083 / 0.000125 BTC</span>
         </div>
         <a href="/checkout" class="btn-order">Order Now</a>
       </div>
 
       <div class="menu-item">
-        <img src="images/smokes.jpg" alt="smokes" />
+        <img
+          src="{{ url_for('static', filename='images/gizzards.png') }}"
+          alt="Gizzards"
+        />
+        <div class="item-details">
+          <h3>Gizzards</h3>
+          <span class="price-tag">Ksh 480</span>
+          <span class="btc-price">₿ 0.00040 BTC</span>
+        </div>
+        <a href="/checkout" class="btn-order">Order Now</a>
+      </div>
+
+      <div class="menu-item">
+        <img
+          src="{{ url_for('static', filename='images/neck.png') }}"
+          alt="Neck"
+        />
+        <div class="item-details">
+          <h3>Neck</h3>
+          <span class="price-tag">Ksh 300</span>
+          <span class="btc-price">₿ 0.00025 BTC</span>
+        </div>
+        <a href="/checkout" class="btn-order">Order Now</a>
+      </div>
+
+      <div class="menu-item">
+        <img
+          src="{{ url_for('static', filename='images/liver.png') }}"
+          alt="Liver"
+        />
+        <div class="item-details">
+          <h3>liver</h3>
+          <span class="price-tag">Ksh 300</span>
+          <span class="btc-price">₿ 0.00025 BTC</span>
+        </div>
+        <a href="/checkout" class="btn-order">Order Now</a>
+      </div>
+
+      <div class="menu-item">
+        <img
+          src="{{ url_for('static', filename='images/smokes.jpg') }}"
+          alt="smokes"
+        />
         <div class="item-details">
           <h3>Smokes</h3>
           <span class="price-tag">Ksh 50</span>
-          <span class="btc-price">₿ 0.00004 BTC</span>
+          <span class="btc-price">₿ 0.000042 BTC</span>
         </div>
         <a href="/checkout" class="btn-order">Order Now</a>
       </div>
