@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Rich Chicken Hub - Fast and easy checkout with M-Pesa and Bitcoin payments"
+    />
+    <meta
+      name="keywords"
+      content="Rich Chicken Hub checkout, M-Pesa payment, Bitcoin payment, Nairobi food delivery"
+    />
+    <title>Checkout | Rich Chicken Hub</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <style>
+      :root {
+        --bg-color: #fffed9;
+        --text-main: #0a0a0a;
+        --accent-orange: #ff6600;
+      }
+
+      body {
+        background-color: var(--bg-color);
+        margin: 0;
+        font-family: "Poppins" cover by grace;
+      }
+
+      .checkout-header {
+        text-align: center; /* Centers the text horizontally */
+        margin-bottom: 20px; /* Pushes the white checkout box down slightly */
+        width: 100%;
+      }
+
+      .checkout-header h1,
+      .checkout-header p,
+      .payment-section h2 {
+        font-family:
+          "Comic Sans MS", "Comic Sans", cursive; /* Applies Comic Sans */
+        font-weight: bold; /* Makes it bold */
+        color: #070707; /* Darker color for better readability */
+      }
+
+      /* Specifically for the "Payment Options" text if it's separate */
+      .payment-section h2 {
+        text-align: center;
+        font-size: 2rem;
+        margin-top: 20px;
+      }
+
+      .checkout-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 80vh;
+        padding: 20px;
+      }
+
+      .checkout-card {
+        background: rgb(255, 255, 255);
+        width: 100%;
+        max-width: 700px;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        text-align: center;
+      }
+
+      .checkout-card h2 {
+        color: var(--text-main);
+        margin-bottom: 5px;
+      }
+
+      .subtitle {
+        color: #686767;
+        margin-bottom: 30px;
+      }
+
+      .payment-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .payment-method {
+        border: 2px solid #f8ce11;
+        padding: 30px 20px;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .payment-method:hover {
+        border-color: var(--accent-orange);
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(255, 102, 0, 0.1);
+      }
+
+      .icon-box img {
+        height: 50px;
+        margin-bottom: 15px;
+      }
+
+      .payment-method h3 {
+        font-size: 1.1rem;
+        margin: 10px 0;
+      }
+
+      .payment-method p {
+        font-size: 0.85rem;
+        color: #888;
+        margin-bottom: 20px;
+      }
+
+      .pay-btn {
+        background: #fafd32;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-weight: 600;
+        color: var(--text-main);
+        transition: 0.3s;
+      }
+
+      .payment-method:hover .pay-btn {
+        background: var(--accent-orange);
+        color: white;
+      }
+
+      .bitcoin-note {
+        margin-top: 12px;
+        color: #555;
+        font-size: 0.95rem;
+      }
+
+      @media (max-width: 780px) {
+        .checkout-card {
+          width: 100%;
+          padding: 25px;
+        }
+
+        .payment-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .checkout-container {
+          min-height: auto;
+          padding: 15px;
+        }
+      }
+
+      .security-footer {
+        margin-top: 30px;
+        font-size: 0.8rem;
+        color: #aaa;
+        border-top: 1px solid #eee;
+        padding-top: 20px;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <a href="/" class="nav-home-btn">
+      <i class="fas fa-home"></i><span> Home</span></a
+    >
+    <header class="checkout-header">
+      <h1>🍗 Fast Checkout 🍗</h1>
+      <p>Choose your preferred payment method</p>
+    </header>
+
+    <section class="payment-section">
+      <h2>Payment Options</h2>
+      <div class="checkout-container">
+        <div class="checkout-card">
+          <h2>Secure Checkout</h2>
+          <p class="subtitle">
+            Select your preferred payment method to complete your order.
+          </p>
+
+          <div class="payment-grid">
+            <div class="payment-method" onclick="showMpesa()">
+              <div class="icon-box">
+                <img src="images/pochi.png" alt="M-Pesa" />
+                <h3>Lipa na M-PESA</h3>
+                <p>Fast and secure mobile payment</p>
+                <form action="/pay-mpesa" method="POST">
+                  <input
+                    type="hidden"
+                    name="phone"
+                    value="254712345678"
+                    required
+                  />
+                  <input type="hidden" name="amount" value="1200" required />
+                  <button type="submit" class="pay-btn">Select M-Pesa</button>
+                </form>
+              </div>
+            </div>
+
+            <script>
+              function triggerMpesa() {
+                let phoneNumber = prompt("please enter your M-pesa (2547...)");
+
+                if (phoneNumber) {
+                  // Create a fake form and submit it to my backend
+                  let formData = new FormData();
+                  formData.append("phone", PhoneNumber);
+                  fetch("/pay-mpesa", {
+                    method: "POST",
+                    body: formData,
+                  }).then((response) => {
+                    alert("check your phone for the M-Pesa PIN pompt!");
+                  });
+                }
+              }
+            </script>
+
+            <div class="payment-method">
+              <div class="icon-box">
+                <img src="images/bitcoin.png" alt="Bitcoin" />
+              </div>
+              <h3>Pay with Bitcoin</h3>
+              <p>Instant Lightning Network transfer</p>
+              <a href="lightning:hopekuku@blink.sv" class="pay-btn"
+                >Pay with Bitcoin</a
+              >
+              <p class="bitcoin-note">
+                Lightning address: <strong>hopekuku@blink.sv</strong>
+              </p>
+            </div>
+          </div>
+
+          <div class="security-footer">
+            <i class="fas fa-shield-alt"></i> 100% Secure & Encrypted Payments
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="java.js"></script>
+  </body>
+</html>
