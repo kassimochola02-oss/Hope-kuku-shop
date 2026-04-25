@@ -14,6 +14,17 @@ PASSKEY = "your_stk_push_passkey"
 BUSINESS_SHORTCODE = "254769587139"
 CALLBACK_URL = "https://yourdomain.com/callback" # Must be HTTPS
 
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+# Vercel needs the 'app' object, but doesn't need app.run()
+if __name__ == "__main__":
+    app.run()
+    
 @app.route('/')
 def home():
     return render_template('index.html')
